@@ -2,9 +2,12 @@
 
 
 ## Latest Release
-
 <!-- LATEST RELEASE START -->
-<!-- This section will be automatically updated by GitHub Actions with the latest release information -->
+## Latest Release
+[View on GitHub](https://github.com/DigneZzZ/v2raytun/releases/latest)
+
+### Assets:
+
 <!-- LATEST RELEASE END -->
 
 ## Pre-release
