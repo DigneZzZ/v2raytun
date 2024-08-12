@@ -1,11 +1,11 @@
-name: Update README with Latest Release
+name: Update README with Latest and Pre-release Info
 
 permissions:
   contents: write
 
 on:
   release:
-    types: [published]
+    types: [published, prereleased]
   push:
     branches:
       - main
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Get latest release info
-        id: get_release
+        id: get_latest_release
         uses: actions/github-script@v3
         with:
           script: |
@@ -31,24 +31,42 @@ jobs:
               name: asset.name,
               download_url: asset.browser_download_url
             }))));
+            core.setOutput('prerelease', latestRelease.data.prerelease);
 
       - name: Update README.md
         run: |
-          echo "## Latest Release: ${{ steps.get_release.outputs.tag_name }}" > temp_readme.md
-          echo "[View on GitHub](${{ steps.get_release.outputs.html_url }})" >> temp_readme.md
-          echo "" >> temp_readme.md
-          echo "### Assets:" >> temp_readme.md
+          # Extract section markers and static content
+          awk '/<!-- LATEST RELEASE START -->/{flag=1;next}/<!-- LATEST RELEASE END -->/{flag=0}flag' README.md > temp_static_content.md
           
-          assets='${{ steps.get_release.outputs.assets }}'
+          # Handle latest release
+          if [ "${{ steps.get_latest_release.outputs.prerelease }}" = "true" ]; then
+            # For pre-release
+            echo "## Pre-release: ${{ steps.get_latest_release.outputs.tag_name }}" > temp_latest_release.md
+            echo "[View on GitHub](${{ steps.get_latest_release.outputs.html_url }})" >> temp_latest_release.md
+          else
+            # For latest release
+            echo "## Latest Release" > temp_latest_release.md
+            echo "[View on GitHub](https://github.com/${{ github.repository }}/releases/latest)" >> temp_latest_release.md
+          fi
+
+          echo "" >> temp_latest_release.md
+          echo "### Assets:" >> temp_latest_release.md
+          
+          assets='${{ steps.get_latest_release.outputs.assets }}'
           echo $assets | jq -c '.[]' | while read i; do
             name=$(echo $i | jq -r '.name')
             url=$(echo $i | jq -r '.download_url')
-            echo "- [$name]($url)" >> temp_readme.md
+            echo "- [$name]($url)" >> temp_latest_release.md
           done
           
-          echo "" >> temp_readme.md
-          cat README.md >> temp_readme.md
-          mv temp_readme.md README.md
+          # Combine the static content with the latest release info
+          echo "" >> temp_latest_release.md
+          echo "<!-- LATEST RELEASE START -->" >> temp_static_content.md
+          cat temp_latest_release.md >> temp_static_content.md
+          echo "<!-- LATEST RELEASE END -->" >> temp_static_content.md
+
+          # Update the README.md
+          mv temp_static_content.md README.md
 
       - name: Commit changes
         run: |
