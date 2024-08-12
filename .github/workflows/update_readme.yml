@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Get latest release info
         id: get_latest_release
         uses: actions/github-script@v3
@@ -35,39 +35,53 @@ jobs:
 
       - name: Update README.md
         run: |
-          # Read the entire README.md content
-          readme_content=$(cat README.md)
+          # Start generating the README.md content
+          echo "# v2raytun" > README.md
+          echo "## Current Version: ${{ steps.get_latest_release.outputs.tag_name }}" >> README.md
+          echo "" >> README.md
 
-          # Extract the parts before and after the LATEST RELEASE section
-          before_latest_release=$(echo "$readme_content" | awk '/<!-- LATEST RELEASE START -->/{exit}1')
-          after_latest_release=$(echo "$readme_content" | awk '/<!-- LATEST RELEASE END -->/{flag=1; next} flag')
-
-          # Extract the parts before and after the PRERELEASE section
-          before_prerelease=$(echo "$readme_content" | awk '/<!-- PRERELEASE START -->/{exit}1')
-          after_prerelease=$(echo "$readme_content" | awk '/<!-- PRERELEASE END -->/{flag=1; next} flag')
-
-          # Create the new content for LATEST RELEASE section
-          latest_release_section="<!-- LATEST RELEASE START -->\n"
+          # Add release information
           if [ "${{ steps.get_latest_release.outputs.prerelease }}" = "true" ]; then
-            latest_release_section+="## Pre-release: ${{ steps.get_latest_release.outputs.tag_name }}\n"
-            latest_release_section+="[View on GitHub](${{ steps.get_latest_release.outputs.html_url }})\n\n"
+            echo "## Pre-release: ${{ steps.get_latest_release.outputs.tag_name }}" >> README.md
+            echo "[View on GitHub](${{ steps.get_latest_release.outputs.html_url }})" >> README.md
           else
-            latest_release_section+="## Latest Release\n"
-            latest_release_section+="[View on GitHub](https://github.com/${{ github.repository }}/releases/latest)\n\n"
+            echo "## Latest Release" >> README.md
+            echo "[View on GitHub](https://github.com/${{ github.repository }}/releases/latest)" >> README.md
           fi
-          latest_release_section+="### Assets:\n"
+
+          echo "" >> README.md
+          echo "### Assets:" >> README.md
           
           assets='${{ steps.get_latest_release.outputs.assets }}'
-          echo "$assets" | jq -c '.[]' | while read -r asset; do
-            name=$(echo "$asset" | jq -r '.name')
-            url=$(echo "$asset" | jq -r '.download_url')
-            latest_release_section+="- [$name]($url)\n"
+          echo $assets | jq -c '.[]' | while read i; do
+            name=$(echo $i | jq -r '.name')
+            url=$(echo $i | jq -r '.download_url')
+            echo "- [$name]($url)" >> README.md
           done
-          latest_release_section+="\n<!-- LATEST RELEASE END -->\n"
+          
+          echo "" >> README.md
 
-          # Combine the sections
-          new_readme_content="$before_latest_release\n$latest_release_section$after_latest_release"
-          echo -e "$new_readme_content" > README.md
+          # Add static content about the project
+          cat <<EOT >> README.md
+## Project Information
+
+- **Authors**: The creators of **v2raytun** are reachable via [Telegram](https://t.me/v2raytun).
+- **Latest Version**: The latest version of **v2raytun** is available on [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android).
+- **Project Team**: Visit the project team’s website at [databridges.tech](https://databridges.tech).
+- **Support**: For questions, please use the [Telegram chat](https://t.me/v2raytun). Only the latest versions are provided here for convenience.
+
+### Contributing
+
+We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.md) for more details.
+
+### License
+
+This project is licensed under the [MIT License](LICENSE).
+
+### Contact
+
+For any questions or inquiries, please contact us via [Telegram](https://t.me/v2raytun).
+EOT
 
       - name: Commit changes
         run: |
