@@ -62,26 +62,23 @@ jobs:
           echo "" >> README.md
 
           # Add static content about the project
-          cat <<EOT >> README.md
-## Project Information
+          echo "## Project Information" >> README.md
+          echo "- **Authors**: The creators of **v2raytun** are reachable via [Telegram](https://t.me/v2raytun)." >> README.md
+          echo "- **Latest Version**: The latest version of **v2raytun** is available on [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android)." >> README.md
+          echo "- **Project Team**: Visit the project team’s website at [databridges.tech](https://databridges.tech)." >> README.md
+          echo "- **Support**: For questions, please use the [Telegram chat](https://t.me/v2raytun). Only the latest versions are provided here for convenience." >> README.md
 
-- "**Authors**: The creators of **v2raytun** are reachable via [Telegram](https://t.me/v2raytun)."
-- "**Latest Version**: The latest version of **v2raytun** is available on [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android)."
-- "**Project Team**: Visit the project team’s website at [databridges.tech](https://databridges.tech)."
-- "**Support**: For questions, please use the [Telegram chat](https://t.me/v2raytun). Only the latest versions are provided here for convenience."
+          echo "" >> README.md
+          echo "### Contributing" >> README.md
+          echo "We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.md) for more details." >> README.md
 
-### Contributing
+          echo "" >> README.md
+          echo "### License" >> README.md
+          echo "This project is licensed under the [MIT License](LICENSE)." >> README.md
 
-We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.md) for more details.
-
-### License
-
-This project is licensed under the [MIT License](LICENSE).
-
-### Contact
-
-For any questions or inquiries, please contact us via [Telegram](https://t.me/v2raytun).
-EOT
+          echo "" >> README.md
+          echo "### Contact" >> README.md
+          echo "For any questions or inquiries, please contact us via [Telegram](https://t.me/v2raytun)." >> README.md
 
       - name: Commit changes
         run: |
