@@ -68,13 +68,7 @@ jobs:
           echo "- **Project Team**: Visit the project team’s website at [databridges.tech](https://databridges.tech)." >> README.md
           echo "- **Support**: For questions, please use the [Telegram chat](https://t.me/v2raytun). Only the latest versions are provided here for convenience." >> README.md
 
-          echo "" >> README.md
-          echo "### Contributing" >> README.md
-          echo "We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.md) for more details." >> README.md
 
-          echo "" >> README.md
-          echo "### License" >> README.md
-          echo "This project is licensed under the [MIT License](LICENSE)." >> README.md
 
           echo "" >> README.md
           echo "### Contact" >> README.md
