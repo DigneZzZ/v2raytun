@@ -1,5 +1,7 @@
-## Latest Release: 2.5.18
-[View on GitHub](https://github.com/DigneZzZ/v2raytun/releases/tag/2.5.18)
+<!-- This section will be automatically updated by GitHub Actions with the latest release information -->
+<!-- LATEST RELEASE START -->
+## Latest Release
+[View on GitHub](https://github.com/DigneZzZ/v2raytun/releases/latest)
 
 ### Assets:
 - [v2RayTun_2.5.18_arm64-v8a.apk](https://github.com/DigneZzZ/v2raytun/releases/download/2.5.18/v2RayTun_2.5.18_arm64-v8a.apk)
@@ -8,19 +10,4 @@
 - [v2RayTun_2.5.18_x86.apk](https://github.com/DigneZzZ/v2raytun/releases/download/2.5.18/v2RayTun_2.5.18_x86.apk)
 - [v2RayTun_2.5.18_x86_64.apk](https://github.com/DigneZzZ/v2raytun/releases/download/2.5.18/v2RayTun_2.5.18_x86_64.apk)
 
-# v2raytun
-
-...
-
-<!-- LATEST RELEASE START -->
-<!-- This section will be automatically updated by GitHub Actions with the latest release information -->
 <!-- LATEST RELEASE END -->
-
-<!-- PRERELEASE START -->
-<!-- This section will be automatically updated by GitHub Actions with the latest pre-release information -->
-<!-- PRERELEASE END -->
-
-...
-
-### Static content that should not be modified by the workflow
-...
