@@ -1,5 +1,8 @@
 name: Update README with Latest Release
 
+permissions:
+  contents: write
+
 on:
   release:
     types: [published]
@@ -7,14 +10,12 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-  
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
       - name: Get latest release info
         id: get_release
         uses: actions/github-script@v3
@@ -24,28 +25,31 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
             });
-            return {
-              tag_name: latestRelease.data.tag_name,
-              html_url: latestRelease.data.html_url,
-              assets: latestRelease.data.assets.map(asset => ({
-                name: asset.name,
-                download_url: asset.browser_download_url
-              }))
-            };
+            core.setOutput('tag_name', latestRelease.data.tag_name);
+            core.setOutput('html_url', latestRelease.data.html_url);
+            core.setOutput('assets', JSON.stringify(latestRelease.data.assets.map(asset => ({
+              name: asset.name,
+              download_url: asset.browser_download_url
+            }))));
+
       - name: Update README.md
         run: |
           echo "## Latest Release: ${{ steps.get_release.outputs.tag_name }}" > temp_readme.md
           echo "[View on GitHub](${{ steps.get_release.outputs.html_url }})" >> temp_readme.md
           echo "" >> temp_readme.md
           echo "### Assets:" >> temp_readme.md
-          for asset in "${{ steps.get_release.outputs.assets }}"; do
-            name=$(echo $asset | jq -r '.name')
-            url=$(echo $asset | jq -r '.download_url')
+          
+          assets='${{ steps.get_release.outputs.assets }}'
+          echo $assets | jq -c '.[]' | while read i; do
+            name=$(echo $i | jq -r '.name')
+            url=$(echo $i | jq -r '.download_url')
             echo "- [$name]($url)" >> temp_readme.md
           done
+          
           echo "" >> temp_readme.md
           cat README.md >> temp_readme.md
           mv temp_readme.md README.md
+
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
