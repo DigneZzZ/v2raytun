@@ -35,38 +35,38 @@ jobs:
 
       - name: Update README.md
         run: |
-          # Extract section markers and static content
-          awk '/<!-- LATEST RELEASE START -->/{flag=1;next}/<!-- LATEST RELEASE END -->/{flag=0}flag' README.md > temp_static_content.md
-          
-          # Handle latest release
-          if [ "${{ steps.get_latest_release.outputs.prerelease }}" = "true" ]; then
-            # For pre-release
-            echo "## Pre-release: ${{ steps.get_latest_release.outputs.tag_name }}" > temp_latest_release.md
-            echo "[View on GitHub](${{ steps.get_latest_release.outputs.html_url }})" >> temp_latest_release.md
-          else
-            # For latest release
-            echo "## Latest Release" > temp_latest_release.md
-            echo "[View on GitHub](https://github.com/${{ github.repository }}/releases/latest)" >> temp_latest_release.md
-          fi
+          # Read the entire README.md content
+          readme_content=$(cat README.md)
 
-          echo "" >> temp_latest_release.md
-          echo "### Assets:" >> temp_latest_release.md
+          # Extract the parts before and after the LATEST RELEASE section
+          before_latest_release=$(echo "$readme_content" | awk '/<!-- LATEST RELEASE START -->/{exit}1')
+          after_latest_release=$(echo "$readme_content" | awk '/<!-- LATEST RELEASE END -->/{flag=1; next} flag')
+
+          # Extract the parts before and after the PRERELEASE section
+          before_prerelease=$(echo "$readme_content" | awk '/<!-- PRERELEASE START -->/{exit}1')
+          after_prerelease=$(echo "$readme_content" | awk '/<!-- PRERELEASE END -->/{flag=1; next} flag')
+
+          # Create the new content for LATEST RELEASE section
+          latest_release_section="<!-- LATEST RELEASE START -->\n"
+          if [ "${{ steps.get_latest_release.outputs.prerelease }}" = "true" ]; then
+            latest_release_section+="## Pre-release: ${{ steps.get_latest_release.outputs.tag_name }}\n"
+            latest_release_section+="[View on GitHub](${{ steps.get_latest_release.outputs.html_url }})\n\n"
+          else
+            latest_release_section+="## Latest Release\n"
+            latest_release_section+="[View on GitHub](https://github.com/${{ github.repository }}/releases/latest)\n\n"
+          fi
+          latest_release_section+="### Assets:\n"
           
           assets='${{ steps.get_latest_release.outputs.assets }}'
           echo $assets | jq -c '.[]' | while read i; do
             name=$(echo $i | jq -r '.name')
             url=$(echo $i | jq -r '.download_url')
-            echo "- [$name]($url)" >> temp_latest_release.md
+            latest_release_section+="- [$name]($url)\n"
           done
-          
-          # Combine the static content with the latest release info
-          echo "" >> temp_latest_release.md
-          echo "<!-- LATEST RELEASE START -->" >> temp_static_content.md
-          cat temp_latest_release.md >> temp_static_content.md
-          echo "<!-- LATEST RELEASE END -->" >> temp_static_content.md
+          latest_release_section+="\n<!-- LATEST RELEASE END -->\n"
 
-          # Update the README.md
-          mv temp_static_content.md README.md
+          # Combine the sections
+          echo -e "$before_latest_release\n$latest_release_section$after_latest_release" > README.md
 
       - name: Commit changes
         run: |
