@@ -58,15 +58,16 @@ jobs:
           latest_release_section+="### Assets:\n"
           
           assets='${{ steps.get_latest_release.outputs.assets }}'
-          echo $assets | jq -c '.[]' | while read i; do
-            name=$(echo $i | jq -r '.name')
-            url=$(echo $i | jq -r '.download_url')
+          echo "$assets" | jq -c '.[]' | while read -r asset; do
+            name=$(echo "$asset" | jq -r '.name')
+            url=$(echo "$asset" | jq -r '.download_url')
             latest_release_section+="- [$name]($url)\n"
           done
           latest_release_section+="\n<!-- LATEST RELEASE END -->\n"
 
           # Combine the sections
-          echo -e "$before_latest_release\n$latest_release_section$after_latest_release" > README.md
+          new_readme_content="$before_latest_release\n$latest_release_section$after_latest_release"
+          echo -e "$new_readme_content" > README.md
 
       - name: Commit changes
         run: |
