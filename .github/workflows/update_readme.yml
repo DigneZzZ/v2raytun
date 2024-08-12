@@ -29,7 +29,7 @@ jobs:
             core.setOutput('html_url', latestRelease.data.html_url);
             core.setOutput('assets', JSON.stringify(latestRelease.data.assets.map(asset => ({
               name: asset.name,
-              download_url: asset.browser_download_url
+              download_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/releases/download/latest/${asset.name}`
             }))));
             core.setOutput('prerelease', latestRelease.data.prerelease);
 
