@@ -73,6 +73,9 @@ jobs:
           echo "" >> README.md
           echo "### Contact" >> README.md
           echo "For any questions or inquiries, please contact us via [Telegram](https://t.me/v2raytun)." >> README.md
+      - name: Checkout to main branch
+        run: |
+          git checkout main
 
       - name: Commit changes
         run: |
