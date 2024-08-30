@@ -68,11 +68,13 @@ jobs:
           echo "- **Project Team**: Visit the project team’s website at [databridges.tech](https://databridges.tech)." >> README.md
           echo "- **Support**: For questions, please use the [Telegram chat](https://t.me/v2raytun). Only the latest versions are provided here for convenience." >> README.md
 
-
-
           echo "" >> README.md
           echo "### Contact" >> README.md
           echo "For any questions or inquiries, please contact us via [Telegram](https://t.me/v2raytun)." >> README.md
+
+          # Add a random comment to ensure there is always a change
+          echo "<!-- Updated on $(date) -->" >> README.md
+
       - name: Checkout to main branch
         run: |
           git checkout main
