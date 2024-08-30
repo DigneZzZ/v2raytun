@@ -1,5 +1,5 @@
 # v2raytun
-## Current Version: 2.6.23
+## Current Version: 2.7.24
 
 ## Latest Release
 [View on GitHub](https://github.com/DigneZzZ/v2raytun/releases/latest)
