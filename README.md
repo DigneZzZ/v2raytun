@@ -1,5 +1,20 @@
 # v2raytun
-## Current Version: 2.7.24
+## Current Version: 2.8.26
+
+📲 Android update 2.8.26
+
+- Added export config
+- Added export subscription
+- Added import and export rules
+- Added more features
+- Refactor routing function
+- UI improvements
+- New deeplinks
+- Core update
+
+- hotfix: https://t.me/v2raytun/4/11481
+
+🚀 Available on Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
 ## Latest Release
 [View on GitHub](https://github.com/DigneZzZ/v2raytun/releases/latest)
