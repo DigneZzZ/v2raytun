@@ -1,73 +1,68 @@
-# v2raytun  - Android
+📱 Обновление Android 5.24.76 🇷🇺
 
+- Обновлено ядро Xray до версии 26.6.1
+- Добавлено ядро AmneziaWG версии 0.2.16
 
+- Добавлена поддержка протокола AmneziaWG 2.0 (amneziawg://)
+- Добавлена поддержка заголовка fallback-url
+- Добавлено чтение параметров pinnedPeerCertSha256 и verifyPeerCertByName
+- Добавлено сворачивание списков конфигураций в подписках
+- Добавлена задержка перед фильтрацией списка в Маршрутизации выбранных приложений
+- Поддержка протокола hysteria2 теперь со стороны ядра Xray
+- Туннель теперь запускается со стороны ядра Xray
+- Импорт/экспорт также конфигураций WireGuard, AmneziaWG
+- Уменьшено время ожидания ответов до 8сек
+- Упразднен параметр insecure (Разрешать небезопасные)
+- Прочие исправления
 
-
-## Current Version: 5.21.68
-
-📱 Обновление Android 5.21.68 🇷🇺
-
-- Исправлена ошибка с обновлением списков после пингования
-- Исправлена ошибка с редактированием пресетов
+🛡Архитектура x86 больше не поддерживается
 
 ⚠️Существует разделение версий для Google Play и публикуемых здесь - настройка игнорирования проверки SSL сертификатов доступна только в версии не из Google Play
 
 📱 Доступно в Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
-📱 Update for Android 5.19.64 🇺🇸
+📱 Update for Android 5.24.76 🇺🇸
 
-- Fixed issue with updating lists after pinging
-- Fixed issue with editing presets
+- Updated Xray core to version 26.6.1
+- Added AmneziaWG core, version 0.2.16
+
+- Added support for AmneziaWG 2.0 protocol (amneziawg://)
+- Added support for fallback-url header
+- Added support for reading pinnedPeerCertSha256 and verifyPeerCertByName parameters
+- Added collapsible configuration lists in subscriptions
+- Added delay before filtering list in Routing of selected applications
+- Support for hysteria2 protocol is now provided by Xray core
+- Tunnel now starts from Xray core
+- Import/export of WireGuard and AmneziaWG configurations has also been added
+- Response timeout reduced to 8 seconds
+- The insecure parameter (Allow insecure) has been removed
+- Other fixes
+
+🛡The x86 architecture is no longer supported
 
 ⚠️There is a separation between the versions for Google Play and those published here - the setting to ignore SSL certificate verification is available only in the version not from Google Play
 
 📱 Available on Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
-
-[v2RayTun_universal.apk](https://github.com/DigneZzZ/v2raytun/releases/latest/download/v2RayTun_universal.apk)
-
-
-Alternative links from mainteiners: https://storage.fcknrockn.net/v2RayTun.apk
-
-🚀 Available on [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android)
-
 ---
-🥇 Обновление 🖥 Windows RELEASE 3.8.11 🇷🇺
 
-- Добавлена поддержка импорта JSON конфигураций через QR-код со смартфона
-- Добавлена поддержка импорта из файла с изображением QR-кода
-- Добавлена поддержка заголовка network-filter (cм. network-filter (https://docs.v2raytun.com/overview/supported-headers#network-filter))
-- Добавлено больше информации о текущем подключении
-- Добавлен аргумент --console для вывода логов в консоль при запуске из консоли
-.\v2RayTun.exe --console
-- Добавлен диплинк для открытия пресета
-v2raytun://open-traffic-rules?id=
-- Замена Direct Service на Traffic Rules (https://t.me/v2raytun/3/279471)
-- Улучшение фильтрации некорректных URL
-- Исправлены ошибки логирования ядра xray, в частности вызывавшие утечки памяти
-- Исправлены ошибки в маршрутизации для ядра xray
-- Исправлены ошибки парсинга названий JSON конфигураций
-- Исправлены ошибки парсинга значений kcp, httpupgrade, xhttp
+🥇 Обновление 🖥 Windows RELEASE 3.8.12 🇷🇺
+
+- Исправлены ошибки импорта JSON подписок
+- Исправлены ошибки парсинга значения xhttp extra
+- Исправлены возможные ошибки чтения георесурсов
+- Прочие исправления
 
 ⚠️В случаях, когда у пользователя не работает режим туннеля, рекомендуется использовать стек gVisor (Настройки трафика)
 
-🥇 Update for 🖥 Windows RELEASE 3.8.11 🇺🇸
+🥇 Update for 🖥 Windows RELEASE 3.8.12 🇺🇸
 
-- Added support for importing JSON configurations via QR code from smartphone
-- Added support for importing from file containing QR code image
-- Added support for network-filter header (see network-filter (https://docs.v2raytun.com/overview/supported-headers#network-filter))
-- Added more information about current connection
-- Added --console argument to output app logs to console when running from console
-- Added deeplink v2raytun://open-traffic-rules?id= to open preset
-- Replaced Direct Service with Traffic Rules (https://t.me/v2raytun/3/279520)
-- Improved filtering of invalid URLs
-- Fixed logging errors in xray core, specifically those causing memory leaks
-- Fixed routing errors in xray core
-- Fixed parsing errors for JSON configuration names
-- Fixed parsing errors for kcp, httpupgrade, and xhttp values
+- Fixed issues with importing JSON subscriptions
+- Fixed issues with parsing xhttp extra value
+- Fixed potential issues with initializing georesoures
+- Other fixes
 
 ⚠️If tunnel mode isn't working, we recommend using gVisor stack (Traffic settings)
-
 
 ---
 
