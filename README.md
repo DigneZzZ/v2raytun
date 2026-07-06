@@ -1,8 +1,7 @@
-📱 Обновление Android 5.24.76 🇷🇺
+# 📱 Обновление Android 5.24.76 🇷🇺
 
 - Обновлено ядро Xray до версии 26.6.1
 - Добавлено ядро AmneziaWG версии 0.2.16
-
 - Добавлена поддержка протокола AmneziaWG 2.0 (amneziawg://)
 - Добавлена поддержка заголовка fallback-url
 - Добавлено чтение параметров pinnedPeerCertSha256 и verifyPeerCertByName
@@ -15,17 +14,16 @@
 - Упразднен параметр insecure (Разрешать небезопасные)
 - Прочие исправления
 
-🛡Архитектура x86 больше не поддерживается
+### 🛡Архитектура x86 больше не поддерживается
 
 ⚠️Существует разделение версий для Google Play и публикуемых здесь - настройка игнорирования проверки SSL сертификатов доступна только в версии не из Google Play
 
 📱 Доступно в Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
-📱 Update for Android 5.24.76 🇺🇸
+## 📱 Update for Android 5.24.76 🇺🇸
 
 - Updated Xray core to version 26.6.1
 - Added AmneziaWG core, version 0.2.16
-
 - Added support for AmneziaWG 2.0 protocol (amneziawg://)
 - Added support for fallback-url header
 - Added support for reading pinnedPeerCertSha256 and verifyPeerCertByName parameters
@@ -42,11 +40,11 @@
 
 ⚠️There is a separation between the versions for Google Play and those published here - the setting to ignore SSL certificate verification is available only in the version not from Google Play
 
-📱 Available on Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
+### 📱 Available on Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
 ---
 
-🥇 Обновление 🖥 Windows RELEASE 3.8.12 🇷🇺
+# 🥇 Обновление 🖥 Windows RELEASE 3.8.12 🇷🇺
 
 - Исправлены ошибки импорта JSON подписок
 - Исправлены ошибки парсинга значения xhttp extra
@@ -55,7 +53,7 @@
 
 ⚠️В случаях, когда у пользователя не работает режим туннеля, рекомендуется использовать стек gVisor (Настройки трафика)
 
-🥇 Update for 🖥 Windows RELEASE 3.8.12 🇺🇸
+## 🥇 Update for 🖥 Windows RELEASE 3.8.12 🇺🇸
 
 - Fixed issues with importing JSON subscriptions
 - Fixed issues with parsing xhttp extra value
