@@ -1,67 +1,52 @@
-# 📱 Обновление Android 5.24.76 🇷🇺
+🥇 Обновление 🖥 Windows RELEASE 3.10.15 🇷🇺
 
-- Обновлено ядро Xray до версии 26.6.1
-- Добавлено ядро AmneziaWG версии 0.2.16
-- Добавлена поддержка протокола AmneziaWG 2.0 (amneziawg://)
-- Добавлена поддержка заголовка fallback-url
-- Добавлено чтение параметров pinnedPeerCertSha256 и verifyPeerCertByName
-- Добавлено сворачивание списков конфигураций в подписках
-- Добавлена задержка перед фильтрацией списка в Маршрутизации выбранных приложений
-- Поддержка протокола hysteria2 теперь со стороны ядра Xray
-- Туннель теперь запускается со стороны ядра Xray
-- Импорт/экспорт также конфигураций WireGuard, AmneziaWG
-- Уменьшено время ожидания ответов до 8сек
-- Упразднен параметр insecure (Разрешать небезопасные)
+- Добавлено отображение EU (🇪🇺) флага
+- Исправлен порядок чтения правил пресета
+- Исправлен парсинг параметра password протокола Trojan
+- Исправлена передача DNS из JSON конфигурации в туннель
+- Исправлена ошибка импорта многострочных конфигураций
 - Прочие исправления
 
-### 🛡Архитектура x86 больше не поддерживается
+⚠В случаях, когда у пользователя не работает режим туннеля, рекомендуется использовать стек gVisor (Настройки трафика)
 
-⚠️Существует разделение версий для Google Play и публикуемых здесь - настройка игнорирования проверки SSL сертификатов доступна только в версии не из Google Play
+🥇 Update for 🖥 Windows RELEASE 3.10.15 🇺🇸
 
-📱 Доступно в Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
-
-## 📱 Update for Android 5.24.76 🇺🇸
-
-- Updated Xray core to version 26.6.1
-- Added AmneziaWG core, version 0.2.16
-- Added support for AmneziaWG 2.0 protocol (amneziawg://)
-- Added support for fallback-url header
-- Added support for reading pinnedPeerCertSha256 and verifyPeerCertByName parameters
-- Added collapsible configuration lists in subscriptions
-- Added delay before filtering list in Routing of selected applications
-- Support for hysteria2 protocol is now provided by Xray core
-- Tunnel now starts from Xray core
-- Import/export of WireGuard and AmneziaWG configurations has also been added
-- Response timeout reduced to 8 seconds
-- The insecure parameter (Allow insecure) has been removed
+- Added display of EU (🇪🇺) flag
+- Fixed reading order of preset rules
+- Fixed parsing of password parameter in Trojan protocol
+- Fixed transfer of DNS from JSON configuration to tunnel
+- Fixed issue with importing multiline configurations
 - Other fixes
 
-🛡The x86 architecture is no longer supported
-
-⚠️There is a separation between the versions for Google Play and those published here - the setting to ignore SSL certificate verification is available only in the version not from Google Play
-
-### 📱 Available on Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
+⚠If tunnel mode isn't working, we recommend using gVisor stack (Traffic settings)
 
 ---
 
-# 🥇 Обновление 🖥 Windows RELEASE 3.8.12 🇷🇺
+📱 Обновление Android 5.25.81 🇷🇺
 
-- Исправлены ошибки импорта JSON подписок
-- Исправлены ошибки парсинга значения xhttp extra
-- Исправлены возможные ошибки чтения георесурсов
+- Добавлено чтение параметра finalmask (fm)
+- Добавлено чтение параметров portHopping, portHoppingInterval, bandwidthUp и bandwidthDown
+- Исправлена ошибка фильтрации списка конфигурации
+- Исправлена ошибка экспорта AWG конфигураций
+- Исправлено зависание подключения на некоторых устройствах
 - Прочие исправления
 
-⚠️В случаях, когда у пользователя не работает режим туннеля, рекомендуется использовать стек gVisor (Настройки трафика)
+⚠Существует разделение версий для Google Play и публикуемых здесь - настройка игнорирования проверки SSL сертификатов доступна только в версии не из Google Play
 
-## 🥇 Update for 🖥 Windows RELEASE 3.8.12 🇺🇸
+📱 Доступно в [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android) (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
-- Fixed issues with importing JSON subscriptions
-- Fixed issues with parsing xhttp extra value
-- Fixed potential issues with initializing georesoures
+📱 Update for Android 5.25.81 🇺🇸
+
+- Added support for reading finalmask (fm) parameter
+- Added support for portHopping, portHoppingInterval, bandwidthUp and bandwidthDown parameters
+- Fixed issue with filtering configuration list
+- Fixed issue with exporting AWG configurations
+- Fixed issue where connection would freeze on some devices
 - Other fixes
 
-⚠️If tunnel mode isn't working, we recommend using gVisor stack (Traffic settings)
+⚠There is a separation between the versions for Google Play and those published here - the setting to ignore SSL certificate verification is available only in the version not from [Google Play](https://play.google.com/store/apps/details?id=com.v2raytun.android)
 
+📱 Available on Google Play (https://play.google.com/store/apps/details?id=com.v2raytun.android)
 ---
 
 
